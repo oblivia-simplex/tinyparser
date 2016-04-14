@@ -62,7 +62,7 @@ arithmetic([['='],VAL]) --> ['ASSIGN'], value(VAL).
 
 comparison([VAL,CMPR]) --> value(VAL), comparison_right(CMPR).
 
-comparison_right([['='],VAL]) --> ['LOGIC_EQ'], value(VAL).
+comparison_right([['=='],VAL]) --> ['LOGIC_EQ'], value(VAL).
 
 comparison_right([['!='],VAL]) --> ['LOGIC_NOT_EQ'], value(VAL).
 
