@@ -19,9 +19,10 @@ create_empty_table :-
 initialize_functions([]) :- !.
 
 initialize_functions([[[[RetType], [FuncName]] | [['(']| [ParamList,[')'],[=], FuncBody]]] | [Rest]]) :-
-    %% flatten(ParamList, FlatParams),
+    flatten(ParamList, FlatParams),
+    subtract(FlatParams, [','], CleanParams),
     %% flatten(FuncBody, FlatBody),
-    add_symbol(FuncName, [RetType, ParamList, FuncBody]),
+    add_symbol(FuncName, [RetType, CleanParams, FuncBody]),
     initialize_functions(Rest).
 
 /**
@@ -61,3 +62,9 @@ get_symbol(Key,LatestEntry) :-
     b_getval(table, Table),
     get_assoc(Key,Table,[LatestEntry|History]).
 
+
+get_signature(Fn, Params) :-
+    get_symbol(Fn, [_, Params, _]).
+
+get_rettype(Fn, RetType) :-
+    get_symbol(Fn, [RetType, _, _]).

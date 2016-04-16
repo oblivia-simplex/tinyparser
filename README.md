@@ -5,3 +5,5 @@ with uglier syntax.
 
 
 
+Now with a toy interpreter. You can, in theory, programme in its
+ugly schemlike language.

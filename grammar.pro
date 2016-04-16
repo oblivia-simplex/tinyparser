@@ -52,7 +52,7 @@ expression([[let],[ID],['='],VAL,[in],EXP]) -->
 
 expression([VAL,EXP]) --> value(VAL), extra_expression(EXP).
 
-extra_expression([ARITH]) --> arithmetic(ARITH).
+extra_expression(ARITH) --> arithmetic(ARITH).
 
 extra_expression([]) --> []. 
 
